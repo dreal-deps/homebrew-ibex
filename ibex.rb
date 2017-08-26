@@ -20,6 +20,11 @@ class Ibex < Formula
     sha256 "d04aab6a6452ab93c3d3341e62df52950f0927715c1cc5e2db2914cc6901e891"
   end
 
+  patch do
+    url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/include_what_you_use.patch"
+    sha256 "98b4954abe86e9db9aa25b436458d7ff219ff9323f609968dc035a111011b7c6"
+  end
+
   def install
     args = %W[
       --prefix=#{prefix}
