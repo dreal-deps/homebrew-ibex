@@ -5,10 +5,10 @@ class Ibex < Formula
   sha256 "6befc72b4c8170c0afede8a45446f6b06b5c93dc00507e50dd3af86bb78d5d9b"
   head "https://github.com/ibex-team/ibex-lib.git"
 
-  bottle do
-    root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
-    sha256 "fbc57be416e4eb1e8440f4e677c8e7d6a7b328051128a2405afc9be16de026bf" => :sierra
-  end
+# bottle do
+#   root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
+#   sha256 "fbc57be416e4eb1e8440f4e677c8e7d6a7b328051128a2405afc9be16de026bf" => :sierra
+# end
 
   depends_on "bison" => :build
   depends_on "flex" => :build
@@ -28,6 +28,11 @@ class Ibex < Formula
   patch do
     url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/include_what_you_use.patch"
     sha256 "98b4954abe86e9db9aa25b436458d7ff219ff9323f609968dc035a111011b7c6"
+  end
+
+  patch do
+    url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/filib_log_interval.patch"
+    sha256 "f86381845a4a6e44e9bfbe703ea3075c203ea8886eb7a7c1903badf63278865e"
   end
 
   def install
