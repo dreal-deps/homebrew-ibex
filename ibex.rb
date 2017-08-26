@@ -7,6 +7,7 @@ class Ibex < Formula
 
 bottle do
   root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
+  rebuild 1
   sha256 "66c039ae252ef3901366fc604fc9180ac34ec8084cc16f60f650668b8e392a51" => :sierra
 end
 
