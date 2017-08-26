@@ -5,6 +5,11 @@ class Ibex < Formula
   sha256 "6befc72b4c8170c0afede8a45446f6b06b5c93dc00507e50dd3af86bb78d5d9b"
   head "https://github.com/ibex-team/ibex-lib.git"
 
+  bottle do
+    root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
+    sha256 "2dc7b339591b50ededfd304d4f72607b3dc72dac08efe9a8a756aba315a4a505" => :sierra
+  end
+
   depends_on "bison" => :build
   depends_on "flex" => :build
   depends_on "pkg-config" => :build
