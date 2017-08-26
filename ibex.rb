@@ -8,6 +8,7 @@ class Ibex < Formula
   depends_on "bison" => :build
   depends_on "flex" => :build
   depends_on "pkg-config" => :build
+  depends_on "dreal-deps/coinor/clp"
 
   patch do
     url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/clp_path.patch"
