@@ -27,7 +27,7 @@ class Ibex < Formula
       --with-optim
       --with-affine
       --interval-lib=filib
-      --clp-dir=/usr/local
+      --clp-path=/usr/local
     ]
 
     system "./waf", "configure", *args
