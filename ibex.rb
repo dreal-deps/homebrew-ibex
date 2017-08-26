@@ -17,7 +17,7 @@ class Ibex < Formula
 
   patch do
     url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/use_std_min.patch"
-    sha256 "828c0f35d02a705c360a92a9bba84a9a7e9e060a9f8c623b2b5e9c983fc09454"
+    sha256 "d04aab6a6452ab93c3d3341e62df52950f0927715c1cc5e2db2914cc6901e891"
   end
 
   def install
