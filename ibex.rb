@@ -38,7 +38,7 @@ class Ibex < Formula
 
   patch do
     url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/add_coin_clp_include.patch"
-    sha256 "b18043ed1572e6b03e739d73c06c42d0cd2a226082b643e30b85f26a0c6e022f"
+    sha256 "ed605060744bbe2adbedcf7e08b26be8918a81ae61d37c2de24dd65af483e2b8"
   end
 
   def install
