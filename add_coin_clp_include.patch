@@ -1,12 +1,13 @@
 diff --git a/plugins/optim/wscript b/plugins/optim/wscript
-index c755303c..2e76b357 100644
+index c755303c..bc1f8964 100644
 --- a/plugins/optim/wscript
 +++ b/plugins/optim/wscript
-@@ -51,6 +51,7 @@ def configure (conf):
+@@ -51,6 +51,8 @@ def configure (conf):
  			clp_include = os.path.join (clp_dir, "include")
  			# Cpl install everything in coin directory
  			coin_include = os.path.join (clp_include, "coin")
 +			coin_include = os.path.join (clp_include, "clp/coin")  # for OSX
++			coin_include = os.path.join (clp_include, "coinutils/coin")  # for OSX
  			clp_lib = os.path.join (clp_dir, "lib")
  			conf.env.append_unique ("INCLUDES_IBEX_DEPS", clp_include)
  			conf.env.append_unique ("INCLUDES_IBEX_DEPS", coin_include)
