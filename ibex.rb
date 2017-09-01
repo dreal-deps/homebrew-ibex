@@ -4,11 +4,12 @@ class Ibex < Formula
   url "https://github.com/ibex-team/ibex-lib/archive/ibex-2.5.1.tar.gz"
   sha256 "6befc72b4c8170c0afede8a45446f6b06b5c93dc00507e50dd3af86bb78d5d9b"
   head "https://github.com/ibex-team/ibex-lib.git"
+  revision 2
 
-bottle do
-  root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
-  sha256 "f20b38a008491bb844011546dd6dca6751ce1606de299a55c8264328c392ec67" => :sierra
-end
+# bottle do
+#   root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
+#   sha256 "f20b38a008491bb844011546dd6dca6751ce1606de299a55c8264328c392ec67" => :sierra
+# end
 
   depends_on "bison" => :build
   depends_on "flex" => :build
@@ -38,6 +39,22 @@ end
   patch do
     url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/add_coin_clp_include.patch"
     sha256 "ed605060744bbe2adbedcf7e08b26be8918a81ae61d37c2de24dd65af483e2b8"
+  end
+
+
+  patch do
+    url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/filibsrc-3.0.2.2.all.all.patch.patch"
+    sha256 "688ed867b681900fb270dd6794874179913f5dd7cbb24f9faea680872164d32f"
+  end
+
+  patch do
+    url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/make_interval_vector_nothrow_move_constructible.patch"
+    sha256 "3f5240b3847acaedf7e5d99542e39db12f41f1e422f7c7e691a204d982906794"
+  end
+
+  patch do
+    url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/use_construct_on_first_use_idiom.patch"
+    sha256 "b7d8360dc12e9b8467ddb72ecdae9b768396ae8c7274c74320884a04e79827e5"
   end
 
   def install

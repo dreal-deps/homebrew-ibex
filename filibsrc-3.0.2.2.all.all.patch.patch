@@ -1,0 +1,394 @@
+diff --git a/plugins/interval_lib_filib/3rd/filibsrc-3.0.2.2.all.all.patch b/plugins/interval_lib_filib/3rd/filibsrc-3.0.2.2.all.all.patch
+index b02006c7..30ed45c1 100644
+--- a/plugins/interval_lib_filib/3rd/filibsrc-3.0.2.2.all.all.patch
++++ b/plugins/interval_lib_filib/3rd/filibsrc-3.0.2.2.all.all.patch
+@@ -1,5 +1,101 @@
+---- filibsrc-3.0.2.2/interval/interval_arith.icc	2016-07-28 15:01:26.130530870 +0200
+-+++ filibsrc-3.0.2.2/interval/interval_arith.icc	2016-07-28 15:01:39.406530478 +0200
++diff --git a/filibsrc-3.0.2.2/ieee/primitive.hpp b/filibsrc-3.0.2.2/ieee/primitive.hpp
++index 567b39a..2972796 100644
++--- a/filibsrc-3.0.2.2/ieee/primitive.hpp
+++++ b/filibsrc-3.0.2.2/ieee/primitive.hpp
++@@ -676,33 +676,33 @@ namespace filib
++ 	void readChar(std::istream& in, char c0) throw(interval_io_exception);
++ 
++ 	template <typename N>
++-	N constructFromBitSet(std::istream & in) throw(interval_io_exception)
+++	N constructFromBitSet(std::istream &) throw(interval_io_exception)
++ 	{
++ 		throw interval_io_exception("constructFromBitSet() called for unsupported type");
++ 	}
++ 	template <typename N>
++-	N constructFromBitSet(std::string & in) throw(interval_io_exception)
+++	N constructFromBitSet(std::string &) throw(interval_io_exception)
++ 	{
++ 		throw interval_io_exception("constructFromBitSet() called for unsupported type");
++ 	}
++ 	template <typename N>
++-	N constructFromBitSet(char const * in) throw(interval_io_exception)
+++	N constructFromBitSet(char const *) throw(interval_io_exception)
++ 	{
++ 		throw interval_io_exception("constructFromBitSet() called for unsupported type");
++ 	}
++ 
++ 	template <typename N>
++-	N constructFromHexSet(std::istream & in) throw(interval_io_exception)
+++	N constructFromHexSet(std::istream &) throw(interval_io_exception)
++ 	{
++ 		throw interval_io_exception("constructFromHexSet() called for unsupported type");
++ 	}
++ 	template <typename N>
++-	N constructFromHexSet(std::string & in) throw(interval_io_exception)
+++	N constructFromHexSet(std::string &) throw(interval_io_exception)
++ 	{
++ 		throw interval_io_exception("constructFromHexSet() called for unsupported type");
++ 	}
++ 	template <typename N>
++-	N constructFromHexSet(char const * in) throw(interval_io_exception)
+++	N constructFromHexSet(char const *) throw(interval_io_exception)
++ 	{
++ 		throw interval_io_exception("constructFromHexSet() called for unsupported type");
++ 	}
++diff --git a/filibsrc-3.0.2.2/interval/interval.hpp b/filibsrc-3.0.2.2/interval/interval.hpp
++index c745bee..3db8566 100755
++--- a/filibsrc-3.0.2.2/interval/interval.hpp
+++++ b/filibsrc-3.0.2.2/interval/interval.hpp
++@@ -657,12 +657,12 @@ namespace filib
++ 			/**
++ 			 copy constructor
++ 			 */
++-			inline interval(interval<N,K,E> const & o);
+++			inline interval(interval<N,K,E> const & o) noexcept;
++ 
++ 			/**
++ 			 destructor
++ 			 */
++-			inline ~interval();
+++			inline ~interval() noexcept;
++ 
++ 			/**
++ 			 assignment operator
++diff --git a/filibsrc-3.0.2.2/interval/interval.icc b/filibsrc-3.0.2.2/interval/interval.icc
++index 0b38768..f8d7103 100755
++--- a/filibsrc-3.0.2.2/interval/interval.icc
+++++ b/filibsrc-3.0.2.2/interval/interval.icc
++@@ -169,7 +169,7 @@ namespace filib
++ 	 * copy constructor
++ 	 **/
++ 	template <typename N, rounding_strategy K, interval_mode E>
++-	inline interval<N,K,E>::interval(interval<N,K,E> const & o)
+++	inline interval<N,K,E>::interval(interval<N,K,E> const & o) noexcept
++ 	: INF(o.INF), SUP(o.SUP)
++ 	{
++ 	}
++@@ -178,7 +178,7 @@ namespace filib
++ 	 * destructor
++ 	 **/
++ 	template <typename N, rounding_strategy K, interval_mode E>
++-	inline interval<N,K,E>::~interval() {}
+++	inline interval<N,K,E>::~interval() noexcept {}
++ 
++ 	/**
++ 	 * assignment operator
++@@ -723,7 +723,7 @@ namespace filib
++ 	bool interval<N,K,E>::interior(interval<N,K,E> const & a) const
++ 	{
++ 		if ( E )
++-			return a.INF < INF && SUP < a.SUP  || isEmpty();
+++			return (a.INF < INF && SUP < a.SUP)  || isEmpty();
++ 		else
++ 			return a.INF < INF && SUP < a.SUP;
++ 	}
++diff --git a/filibsrc-3.0.2.2/interval/interval_arith.icc b/filibsrc-3.0.2.2/interval/interval_arith.icc
++index 54d57f8..2c9680f 100755
++--- a/filibsrc-3.0.2.2/interval/interval_arith.icc
+++++ b/filibsrc-3.0.2.2/interval/interval_arith.icc
+ @@ -214,8 +214,8 @@
+  				else
+  				{
+@@ -11,14 +107,274 @@
+  					)
+  					{
+  						*this = ENTIRE();
+---- filibsrc-3.0.2.2/interval/interval.icc	2016-07-28 15:09:07.522517238 +0200
+-+++ filibsrc-3.0.2.2/interval/interval.icc	2016-07-28 15:09:21.078516837 +0200
+-@@ -723,7 +723,7 @@
+- 	bool interval<N,K,E>::interior(interval<N,K,E> const & a) const
+- 	{
+- 		if ( E )
+--			return a.INF < INF && SUP < a.SUP  || isEmpty();
+-+			return (a.INF < INF && SUP < a.SUP)  || isEmpty();
+- 		else
+- 			return a.INF < INF && SUP < a.SUP;
+- 	}
++diff --git a/filibsrc-3.0.2.2/interval/stdfun/filib_consts.hpp b/filibsrc-3.0.2.2/interval/stdfun/filib_consts.hpp
++index dd06ace..4bdba86 100755
++--- a/filibsrc-3.0.2.2/interval/stdfun/filib_consts.hpp
+++++ b/filibsrc-3.0.2.2/interval/stdfun/filib_consts.hpp
++@@ -716,6 +716,115 @@ namespace filib
++ 		static N const q_at3i;
++ 	};
++ 
+++        template<> double const filib_consts<double>::q_exem;
+++        template<> double const filib_consts<double>::q_exep;
+++        template<> double const filib_consts<double>::q_exmm;
+++        template<> double const filib_consts<double>::q_exmp;
+++        template<> double const filib_consts<double>::q_logm;
+++        template<> double const filib_consts<double>::q_logp;
+++        template<> double const filib_consts<double>::q_lgpm;
+++        template<> double const filib_consts<double>::q_lgpp;
+++        template<> double const filib_consts<double>::q_sqtm;
+++        template<> double const filib_consts<double>::q_sqtp;
+++        template<> double const filib_consts<double>::q_snhm;
+++        template<> double const filib_consts<double>::q_snhp;
+++        template<> double const filib_consts<double>::q_cshm;
+++        template<> double const filib_consts<double>::q_cshp;
+++        template<> double const filib_consts<double>::q_cthm;
+++        template<> double const filib_consts<double>::q_cthp;
+++        template<> double const filib_consts<double>::q_tnhm;
+++        template<> double const filib_consts<double>::q_tnhp;
+++        template<> double const filib_consts<double>::q_asnm;
+++        template<> double const filib_consts<double>::q_asnp;
+++        template<> double const filib_consts<double>::q_acsm;
+++        template<> double const filib_consts<double>::q_acsp;
+++        template<> double const filib_consts<double>::q_actm;
+++        template<> double const filib_consts<double>::q_actp;
+++        template<> double const filib_consts<double>::q_atnm;
+++        template<> double const filib_consts<double>::q_atnp;
+++        template<> double const filib_consts<double>::q_csnm;
+++        template<> double const filib_consts<double>::q_csnp;
+++        template<> double const filib_consts<double>::q_cctm;
+++        template<> double const filib_consts<double>::q_cctp;
+++        template<> double const filib_consts<double>::q_ctnm;
+++        template<> double const filib_consts<double>::q_ctnp;
+++        template<> double const filib_consts<double>::q_sinm;
+++        template<> double const filib_consts<double>::q_sinp;
+++        template<> double const filib_consts<double>::q_cosm;
+++        template<> double const filib_consts<double>::q_cosp;
+++        template<> double const filib_consts<double>::q_cotm;
+++        template<> double const filib_consts<double>::q_cotp;
+++        template<> double const filib_consts<double>::q_tanm;
+++        template<> double const filib_consts<double>::q_tanp;
+++        template<> double const filib_consts<double>::q_lg2m;
+++        template<> double const filib_consts<double>::q_lg2p;
+++        template<> double const filib_consts<double>::q_l10m;
+++        template<> double const filib_consts<double>::q_l10p;
+++        template<> double const filib_consts<double>::q_e2em;
+++        template<> double const filib_consts<double>::q_e2ep;
+++        template<> double const filib_consts<double>::q_e10m;
+++        template<> double const filib_consts<double>::q_e10p;
+++        template<> double const filib_consts<double>::q_pi;
+++        template<> double const filib_consts<double>::q_piha;
+++        template<> double const filib_consts<double>::q_atnt;
+++        template<> double const filib_consts<double>::q_ccsm;
+++        template<> double const filib_consts<double>::q_ccsp;
+++        template<> double const filib_consts<double>::q_minr;
+++        template<> double const filib_consts<double>::q_mine;
+++        template<> double const filib_consts<double>::q_sqra;
+++        template<> double const filib_consts<double>::q_ctht;
+++        template<> double const filib_consts<double>::q_ln2h;
+++        template<> double const filib_consts<double>::q_l10i;
+++        template<> double const filib_consts<double>::q_l2i;
+++        template<> double const filib_consts<double>::q_l10;
+++        template<> double const filib_consts<double>::q_l2;
+++        template<> double const filib_consts<double>::q_p2h;
+++        template<> double const filib_consts<double>::q_p2mh;
+++        template<> double const filib_consts<double>::q_pi2i;
+++        template<> double const filib_consts<double>::q_pi2d;
+++        template<> double const filib_consts<double>::q_pi2u;
+++        template<> double const filib_consts<double>::q_ext1;
+++        template<> double const filib_consts<double>::q_ext2;
+++        template<> double const filib_consts<double>::q_ex2a;
+++        template<> double const filib_consts<double>::q_ex2b;
+++        template<> double const filib_consts<double>::q_ex2c;
+++        template<> double const filib_consts<double>::q_ext3;
+++        template<> double const filib_consts<double>::q_ext4;
+++        template<> double const filib_consts<double>::q_ext5;
+++        template<> double const filib_consts<double>::q_extm;
+++        template<> double const filib_consts<double>::q_extn;
+++        template<> double const filib_consts<double>::q_exil;
+++        template<> double const filib_consts<double>::q_exl1;
+++        template<> double const filib_consts<double>::q_exl2;
+++        template<> double const filib_consts<double>::q_e10i;
+++        template<> double const filib_consts<double>::q_e1l1;
+++        template<> double const filib_consts<double>::q_e1l2;
+++        template<> double const filib_consts<double>::q_lgt1;
+++        template<> double const filib_consts<double>::q_lgt2;
+++        template<> double const filib_consts<double>::q_lgt3;
+++        template<> double const filib_consts<double>::q_lgt4;
+++        template<> double const filib_consts<double>::q_lgt5;
+++        template<> double const filib_consts<double>::q_lgt6;
+++        template<> double const filib_consts<double>::q_at3i;
+++        template<> double const filib_consts<double>::q_atna[7];
+++        template<> double const filib_consts<double>::q_atnb[8];
+++        template<> double const filib_consts<double>::q_atnc[7];
+++        template<> double const filib_consts<double>::q_atnd[6];
+++        template<> double const filib_consts<double>::q_pih[7];
+++        template<> double const filib_consts<double>::q_pi2p[3];
+++        template<> double const filib_consts<double>::q_exa[5];
+++        template<> double const filib_consts<double>::q_exb[9];
+++        template<> double const filib_consts<double>::q_exc[7];
+++        template<> double const filib_consts<double>::q_exd[7];
+++        template<> double const filib_consts<double>::q_exld[32];
+++        template<> double const filib_consts<double>::q_extl[32];
+++        template<> double const filib_consts<double>::q_lgb[2];
+++        template<> double const filib_consts<double>::q_lgc[4];
+++        template<> double const filib_consts<double>::q_lgld[129];
+++        template<> double const filib_consts<double>::q_lgtl[129];
+++        template<> double const filib_consts<double>::q_sinc[6];
+++        template<> double const filib_consts<double>::q_sins[6];
+++        template<> double const filib_consts<double>::q_sint[5];
++ }
++ 
++ #endif
++diff --git a/filibsrc-3.0.2.2/interval/stdfun/interval/log.icc b/filibsrc-3.0.2.2/interval/stdfun/interval/log.icc
++index 579732d..c482534 100755
++--- a/filibsrc-3.0.2.2/interval/stdfun/interval/log.icc
+++++ b/filibsrc-3.0.2.2/interval/stdfun/interval/log.icc
++@@ -85,17 +85,16 @@ namespace filib
++ 			else
++ 				rinf*=filib_consts<double>::q_logp;
++ 
++-				if (E && ( x.sup() == fp_traits<double,K>::infinity() ) )
++-					rsup = fp_traits<double,K>::infinity();
++-				else
++-				{
++-					rsup=q_log<K,E>(x.sup());
++-
+++			if (E && ( x.sup() == fp_traits<double,K>::infinity() ) )
+++				rsup = fp_traits<double,K>::infinity();
+++			else
+++			{
+++				rsup=q_log<K,E>(x.sup());
++ 					if (rsup>=0)
++-						rsup*=filib_consts<double>::q_logp;
++-					else
++-						rsup*=filib_consts<double>::q_logm;
++-				}
+++					rsup*=filib_consts<double>::q_logp;
+++				else
+++					rsup*=filib_consts<double>::q_logm;
+++			}
++ 	
++ 			if ( E )
++ 			{
++diff --git a/filibsrc-3.0.2.2/interval/stdfun/interval/log10.icc b/filibsrc-3.0.2.2/interval/stdfun/interval/log10.icc
++index d4e6e81..40c1741 100755
++--- a/filibsrc-3.0.2.2/interval/stdfun/interval/log10.icc
+++++ b/filibsrc-3.0.2.2/interval/stdfun/interval/log10.icc
++@@ -87,25 +87,25 @@ namespace filib
++ 			else
++ 				rinf*=filib_consts<double>::q_l10p;
++ 
++-				if (E && ( x.sup() == fp_traits<double,K>::infinity() ) )
++-					rsup = fp_traits<double,K>::infinity();
+++			if (E && ( x.sup() == fp_traits<double,K>::infinity() ) )
+++				rsup = fp_traits<double,K>::infinity();
+++			else
+++			{
+++				rsup=q_lg10<K,E>(x.sup());
+++
+++				if (rsup>=0)
+++					rsup*=filib_consts<double>::q_l10p;
++ 				else
++-				{
++-					rsup=q_lg10<K,E>(x.sup());
+++					rsup*=filib_consts<double>::q_l10m;
+++			}
++ 
++-					if (rsup>=0)
++-						rsup*=filib_consts<double>::q_l10p;
++-					else
++-						rsup*=filib_consts<double>::q_l10m;
++-				}
++-    
++-				if ( E )
++-				{
++-					if (fp_traits<double,K>::IsNaN(rinf))
++-						rinf = fp_traits<double,K>::ninfinity();
++-					if (fp_traits<double,K>::IsNaN(rsup))
++-						rsup = fp_traits<double,K>::infinity();
++-				}
+++			if ( E )
+++			{
+++				if (fp_traits<double,K>::IsNaN(rinf))
+++					rinf = fp_traits<double,K>::ninfinity();
+++				if (fp_traits<double,K>::IsNaN(rsup))
+++					rsup = fp_traits<double,K>::infinity();
+++			}
++ 		}   
++ 
++ 		return interval<double,K,E>(rinf,rsup);
++diff --git a/filibsrc-3.0.2.2/interval/stdfun/interval/log1p.icc b/filibsrc-3.0.2.2/interval/stdfun/interval/log1p.icc
++index 04c206a..66a667b 100755
++--- a/filibsrc-3.0.2.2/interval/stdfun/interval/log1p.icc
+++++ b/filibsrc-3.0.2.2/interval/stdfun/interval/log1p.icc
++@@ -88,17 +88,17 @@ namespace filib
++ 			else
++ 				rinf*=filib_consts<double>::q_lgpp;
++     
++-				if (E && (x.sup() == fp_traits<double,K>::infinity() ) )
++-					rsup = fp_traits<double,K>::infinity();
++-				else
++-				{
++-					rsup=q_lg1p<K,E>(x.sup());
+++			if (E && (x.sup() == fp_traits<double,K>::infinity() ) )
+++				rsup = fp_traits<double,K>::infinity();
+++			else
+++			{
+++				rsup=q_lg1p<K,E>(x.sup());
++ 
++-					if (rsup>=0)
++-						rsup*=filib_consts<double>::q_lgpp;
++-					else
++-						rsup*=filib_consts<double>::q_lgpm;
++-				}
+++				if (rsup>=0)
+++					rsup*=filib_consts<double>::q_lgpp;
+++				else
+++					rsup*=filib_consts<double>::q_lgpm;
+++			}
++ 
++ 			if ( E )
++ 			{
++diff --git a/filibsrc-3.0.2.2/interval/stdfun/interval/log2.icc b/filibsrc-3.0.2.2/interval/stdfun/interval/log2.icc
++index eac51d3..6a7bfed 100755
++--- a/filibsrc-3.0.2.2/interval/stdfun/interval/log2.icc
+++++ b/filibsrc-3.0.2.2/interval/stdfun/interval/log2.icc
++@@ -91,22 +91,22 @@ namespace filib
++ 			else
++ 				rinf*=filib_consts<double>::q_lg2p;
++ 
++-				if (E && x.sup() == fp_traits<double,K>::infinity())
++-					rsup = fp_traits<double,K>::infinity();
+++			if (E && x.sup() == fp_traits<double,K>::infinity())
+++				rsup = fp_traits<double,K>::infinity();
+++			else
+++			{
+++				rsup=q_log2<K,E>(x.sup());
+++
+++				if (rsup>=0)
+++					rsup*=filib_consts<double>::q_lg2p;
++ 				else
++-				{
++-					rsup=q_log2<K,E>(x.sup());
+++					rsup*=filib_consts<double>::q_lg2m;
+++			}
++ 
++-					if (rsup>=0)
++-						rsup*=filib_consts<double>::q_lg2p;
++-					else
++-						rsup*=filib_consts<double>::q_lg2m;
++-				}
++-  
++-					if (E && fp_traits<double,K>::IsNaN(rinf))
++-						rinf = fp_traits<double,K>::ninfinity();
++-					if (E && fp_traits<double,K>::IsNaN(rsup))
++-						rsup = fp_traits<double,K>::infinity();
+++				if (E && fp_traits<double,K>::IsNaN(rinf))
+++					rinf = fp_traits<double,K>::ninfinity();
+++				if (E && fp_traits<double,K>::IsNaN(rsup))
+++					rsup = fp_traits<double,K>::infinity();
++ 		}
++ 
++ 		return interval<double,K,E>(rinf,rsup);
