@@ -6,10 +6,10 @@ class Ibex < Formula
   head "https://github.com/ibex-team/ibex-lib.git"
   revision 4
 
-#  bottle do
-#    root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
-#    sha256 "2a7f52feffaa776f98fb3e25d79f695b8c84fc1b9b76f1d39edb655436538529" => :sierra
-#  end
+  bottle do
+    root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
+    sha256 "3661b6d65e9f3668594957ae00c049ef41642cddcf6a06553938b55a28e607f9" => :sierra
+  end
 
   depends_on "bison" => :build
   depends_on "flex" => :build
