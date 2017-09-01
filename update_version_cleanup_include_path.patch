@@ -1,5 +1,18 @@
+diff --git a/plugins/optim/wscript b/plugins/optim/wscript
+index da78c906..37093048 100644
+--- a/plugins/optim/wscript
++++ b/plugins/optim/wscript
+@@ -54,7 +54,7 @@ def configure (conf):
+ 			coin_include2 = os.path.join (clp_include, "clp/coin")  # for OSX
+ 			coin_include3 = os.path.join (clp_include, "coinutils/coin")  # for OSX
+ 			clp_lib = os.path.join (clp_dir, "lib")
+-			conf.env.append_unique ("INCLUDES_IBEX_DEPS", clp_include)
++			# conf.env.append_unique ("INCLUDES_IBEX_DEPS", clp_include)
+ 			conf.env.append_unique ("INCLUDES_IBEX_DEPS", coin_include1)
+ 			conf.env.append_unique ("INCLUDES_IBEX_DEPS", coin_include2)
+ 			conf.env.append_unique ("INCLUDES_IBEX_DEPS", coin_include3)
 diff --git a/wscript b/wscript
-index 1e0e83aa..9f6f551d 100644
+index 1e0e83aa..3f6d6b27 100644
 --- a/wscript
 +++ b/wscript
 @@ -7,7 +7,7 @@ from waflib import Scripting, Logs, Options, Utils
@@ -11,14 +24,3 @@ index 1e0e83aa..9f6f551d 100644
  # The following variable is used only by "waf dist"
  APPNAME='ibex-lib'
  
-@@ -82,8 +82,8 @@ def configure (conf):
- 	conf.env.append_unique ("LIBPATH_IBEX_DEPS", conf.env.LIBDIR)
- 	conf.env.INCDIR = os.path.join (conf.env.PREFIX, "include")
- 	conf.env.INCDIR_HDR = os.path.join (conf.env.INCDIR, "ibex")
--	conf.env.append_unique ("INCLUDES_IBEX_DEPS", conf.env.INCDIR)
--	conf.env.append_unique ("INCLUDES_IBEX_DEPS", conf.env.INCDIR_HDR)
-+	# conf.env.append_unique ("INCLUDES_IBEX_DEPS", conf.env.INCDIR)
-+	# conf.env.append_unique ("INCLUDES_IBEX_DEPS", conf.env.INCDIR_HDR)
- 	conf.env.INCDIR_3RD = os.path.join (conf.env.INCDIR_HDR, "3rd")
- 	conf.env.LIBDIR_3RD = os.path.join (conf.env.LIBDIR, "ibex", "3rd")
- 	conf.env.PKGDIR = os.path.join (conf.env.PREFIX, "share", "pkgconfig")

@@ -4,7 +4,7 @@ class Ibex < Formula
   url "https://github.com/ibex-team/ibex-lib/archive/ibex-2.5.1.tar.gz"
   sha256 "6befc72b4c8170c0afede8a45446f6b06b5c93dc00507e50dd3af86bb78d5d9b"
   head "https://github.com/ibex-team/ibex-lib.git"
-  revision 3
+  revision 4
 
 #  bottle do
 #    root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
@@ -58,7 +58,7 @@ class Ibex < Formula
 
   patch do
     url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/update_version_cleanup_include_path.patch"
-    sha256 "0ec8f52e510ce1bfacd1bf515074a746aaea13265b0aecc4771946627e5c8d2b"
+    sha256 "4da407f298d078dffb80f3e8a18d642475c54d41f4f7d0e9715e3477e858a1fa"
   end
 
   def install
