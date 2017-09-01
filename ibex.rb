@@ -58,6 +58,8 @@ class Ibex < Formula
   end
 
   def install
+    ENV.cxx11
+    ENV.append "CXXFLAGS", "-std=c++11"
     args = %W[
       --prefix=#{prefix}
       --enable-shared
@@ -66,7 +68,6 @@ class Ibex < Formula
       --interval-lib=filib
       --clp-path=/usr/local
     ]
-
     system "./waf", "configure", *args
     system "./waf", "install"
 
