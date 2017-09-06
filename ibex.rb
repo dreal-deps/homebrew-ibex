@@ -4,7 +4,7 @@ class Ibex < Formula
   url "https://github.com/ibex-team/ibex-lib/archive/ibex-2.5.1.tar.gz"
   sha256 "6befc72b4c8170c0afede8a45446f6b06b5c93dc00507e50dd3af86bb78d5d9b"
   head "https://github.com/ibex-team/ibex-lib.git"
-  revision 4
+  revision 5
 
   bottle do
     root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
@@ -59,6 +59,11 @@ class Ibex < Formula
   patch do
     url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/update_version_cleanup_include_path.patch"
     sha256 "4da407f298d078dffb80f3e8a18d642475c54d41f4f7d0e9715e3477e858a1fa"
+  end
+
+  patch do
+    url "https://raw.githubusercontent.com/dreal-deps/homebrew-ibex/master/fix-memory-leak-in-variables.patch"
+    sha256 "916d71e0192e4966d5cb638d9418764cc94a0ed8f8643b2d8359519f4002beef"
   end
 
   def install
