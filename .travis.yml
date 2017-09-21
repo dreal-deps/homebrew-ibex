@@ -10,7 +10,8 @@ matrix:
       compiler: clang
 
 install:
-  - brew install dreal-deps/ibex/ibex
+  - rm /usr/local/include/c++ # https://github.com/Homebrew/brew/issues/1742#issuecomment-277308817
+  - brew install dreal-deps/ibex/ibex --build-from-source
 
 notifications:
   email:
