@@ -1,16 +1,15 @@
 class Ibex < Formula
   desc "C++ library for constraint processing over real numbers."
   homepage "http://www.ibex-lib.org/"
-  url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.5.2.tar.gz"
-  sha256 "ef0ad833336f8ac6b1be2a6bb9ad995d103f6964587d7b8b5ec48438bf4fed13"
+  url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.6.1.tar.gz"
+  sha256 "e5629032fd39aa2c5bfd24477d7e2d079782b260068ce357b95a6e19b281d392"
   head "https://github.com/ibex-team/ibex-lib.git"
-  revision 1
 
-  bottle do
-    root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
-    sha256 "a374948e40655b3e4938a1a8484763c7db454d2b8f30a872b3d1e1ab613f892f" => :sierra
-    sha256 "aa4b7f398b833663299922c8a3ee15bfd36058c75c8555f6054d7c0a84ce4e70" => :high_sierra
-  end
+#  bottle do
+#    root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
+#    sha256 "a374948e40655b3e4938a1a8484763c7db454d2b8f30a872b3d1e1ab613f892f" => :sierra
+#    sha256 "aa4b7f398b833663299922c8a3ee15bfd36058c75c8555f6054d7c0a84ce4e70" => :high_sierra
+#  end
 
   depends_on "bison" => :build
   depends_on "flex" => :build
@@ -24,9 +23,10 @@ class Ibex < Formula
       --prefix=#{prefix}
       --enable-shared
       --with-optim
-      --with-affine
+      --with-solver
+      --with-affine-extended
       --interval-lib=filib
-      --clp-path=#{HOMEBREW_PREFIX}
+      --lp-lib=clp
     ]
     system "./waf", "configure", *args
     system "./waf", "install"
