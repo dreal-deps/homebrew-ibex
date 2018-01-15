@@ -1,22 +1,22 @@
 class Ibex < Formula
   desc "C++ library for constraint processing over real numbers."
   homepage "http://www.ibex-lib.org/"
-  url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.6.3.tar.gz"
-  sha256 "2c2c8b048a16ee45f5cc29797f97b8cb0e330be52114212e464835ef44606011"
+  url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.6.4.tar.gz"
+  sha256 "f40cc010b9ebe3139641428312cdbbff2f48eb4a6c768c731b2ca9e86ea5ddad"
   head "https://github.com/ibex-team/ibex-lib.git"
 
   bottle do
     root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
     cellar :any
-     sha256 "900570ebb61cedad8949ebcb4f7e6cb5912232994d1f7ad5ae01f414822afab2" => :el_capitan
-     sha256 "2abfb2c5b110aacc93cb6183a46c957d316698881c79ea2f43b63df94995096e" => :sierra
-     sha256 "b3aff054ddbd1927b8586b2dd5a56a9327693df8e104d5bf5f11a7aec742acd9" => :high_sierra
+#     sha256 "" => :el_capitan
+#     sha256 "" => :sierra
+     sha256 "4b21696f5ea673786b1288a140dcc3b6ee29db9024c983888e2735ec96e953ed" => :high_sierra
   end
 
   depends_on "bison" => :build
   depends_on "flex" => :build
   depends_on "pkg-config" => :build
-  depends_on "dreal-deps/coinor/clp"
+  depends_on "dreal-deps/coinor/clp" => :build
 
   def install
     ENV.cxx11
@@ -29,6 +29,7 @@ class Ibex < Formula
       --with-affine-extended
       --interval-lib=filib
       --lp-lib=clp
+      --clp-path=#{HOMEBREW_PREFIX}
     ]
     system "./waf", "configure", *args
     system "./waf", "install"
