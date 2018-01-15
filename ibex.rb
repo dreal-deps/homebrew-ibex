@@ -16,7 +16,7 @@ class Ibex < Formula
   depends_on "bison" => :build
   depends_on "flex" => :build
   depends_on "pkg-config" => :build
-  depends_on "dreal-deps/coinor/clp" => :build
+  depends_on "clp" => :build    # "dreal-deps/coinor" must be tapped.
 
   def install
     ENV.cxx11
