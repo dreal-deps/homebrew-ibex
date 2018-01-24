@@ -9,7 +9,7 @@ class Ibex < Formula
     root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
     cellar :any
      sha256 "e3d6b326a4e833f952325236f433b963836b31664679da0950804b0feb66a5bb" => :el_capitan
-     # sha256 "" => :sierra
+     sha256 "7d298038eef66c022f4cd1ea3abfce2f4935f60b26d4e574db81b65731be4d26" => :sierra
      sha256 "4b5946ab7fd882d9418396f5c6b2391f7ae7b04d5414836b2f13ce0268a58635" => :high_sierra
   end
 
