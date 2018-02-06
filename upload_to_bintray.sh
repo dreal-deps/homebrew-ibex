@@ -23,7 +23,7 @@ case `uname -r` in
     ;;
 esac
 
-BOTTLE_FILENAME=ibex-${VERSION}.${OSX_NAME}.bottle.tar.gz
+BOTTLE_FILENAME=ibex@${VERSION}-${VERSION}.${OSX_NAME}.bottle.tar.gz
 BINTRAY_URL=https://api.bintray.com/content/dreal/homebrew-ibex/ibex
 
 if [ -e ${BOTTLE_FILENAME} ]
