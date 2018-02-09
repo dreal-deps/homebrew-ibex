@@ -4,7 +4,8 @@ IFS=$'\n\t'
 
 ID=$1
 PASSWORD=$2
-VERSION=$3
+FORMULA_VERSION=$3
+VERSION=$4
 case `uname -r` in
   14.*)
     OSX_NAME="yosemite"
@@ -23,7 +24,7 @@ case `uname -r` in
     ;;
 esac
 
-BOTTLE_FILENAME=ibex@${VERSION}-${VERSION}.${OSX_NAME}.bottle.tar.gz
+BOTTLE_FILENAME=ibex@${FORMULA_VERSION}-${VERSION}.${OSX_NAME}.bottle.tar.gz
 BINTRAY_URL=https://api.bintray.com/content/dreal/homebrew-ibex/ibex
 
 if [ -e ${BOTTLE_FILENAME} ]
