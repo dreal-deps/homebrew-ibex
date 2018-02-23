@@ -3,15 +3,15 @@ class IbexAT265 < Formula
   homepage "http://www.ibex-lib.org/"
   head "https://github.com/dreal-deps/ibex-lib.git", :branch => "ibex-2.6.5"
   url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.6.5.tar.gz"
-  sha256 "d26610715e0c4525685b51ee33de34fce8de0ea8d1c55c79b53c87a0104335b9"
-  revision 3
+  sha256 "d2c99bf812750116ff1211771f0962137dd03903f670a0ce67bff06e13c7be5e"
+  revision 4
 
   bottle do
     root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
     cellar :any
        # sha256 "ba03ae63c4257fa502623145ab3e488069ae3e83f933a00becbf53254dac0f48" => :el_capitan
        # sha256 "5a4feb24160b05fe05422864524d7d10e35187ab41d009bcddd8315716e672d6" => :sierra
-       sha256 "c10d27f45316b60c8aa0d3cc9aa02918e8c370ab3740fc96490c5b90913729ef" => :high_sierra
+       sha256 "b2f13961709592c613210a8606f5eba26295c1fedb6853df4d0037c6685f04a3" => :high_sierra
   end
 
   depends_on "bison" => :build
