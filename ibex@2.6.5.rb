@@ -1,31 +1,32 @@
 class IbexAT265 < Formula
-  desc "C++ library for constraint processing over real numbers."
+  desc "C++ library for constraint processing over real numbers"
   homepage "http://www.ibex-lib.org/"
-  head "https://github.com/dreal-deps/ibex-lib.git", :branch => "ibex-2.6.5"
   url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.6.5.tar.gz"
   sha256 "d2c99bf812750116ff1211771f0962137dd03903f670a0ce67bff06e13c7be5e"
   revision 4
+  head "https://github.com/dreal-deps/ibex-lib.git", :branch => "ibex-2.6.5"
 
   bottle do
-    root_url 'https://dl.bintray.com/dreal/homebrew-ibex'
+    root_url "https://dl.bintray.com/dreal/homebrew-ibex"
     cellar :any
-       sha256 "a7cb67077c6663c71b905755d5c764e388af7d1c66ee087c644491d75d815c54" => :el_capitan
-       sha256 "6a42d264b0be91bfbcb3c02b78d6d89ec293ae64f18c5af83c20d232d12f3bd1" => :sierra
-       sha256 "b2f13961709592c613210a8606f5eba26295c1fedb6853df4d0037c6685f04a3" => :high_sierra
+    sha256 "a7cb67077c6663c71b905755d5c764e388af7d1c66ee087c644491d75d815c54" => :el_capitan
+    sha256 "6a42d264b0be91bfbcb3c02b78d6d89ec293ae64f18c5af83c20d232d12f3bd1" => :sierra
+    sha256 "b2f13961709592c613210a8606f5eba26295c1fedb6853df4d0037c6685f04a3" => :high_sierra
   end
+
+  keg_only :versioned_formula
+
+  option :cxx11
 
   depends_on "bison" => :build
   depends_on "flex" => :build
   depends_on "pkg-config" => :build
   depends_on "dreal-deps/coinor/clp"
 
-  keg_only :versioned_formula
-  option :cxx11
-  
   def install
     ENV.cxx11
     ENV.append "CXXFLAGS", "-std=c++11"
-    print "#{prefix}"
+    print prefix.to_s
     args = %W[
       --prefix=#{prefix}
       --enable-shared
