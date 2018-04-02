@@ -14,6 +14,7 @@ script:
   - brew update
   - brew install dreal-deps/ibex/ibex@2.6.5 --only-dependencies || true
   - brew install dreal-deps/ibex/ibex@2.6.5 --build-from-source
+  - brew test ibex@2.6.5
 
 notifications:
   email:
