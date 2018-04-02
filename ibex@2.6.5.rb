@@ -40,32 +40,37 @@ class IbexAT265 < Formula
     system "./waf", "configure", *args
     system "./waf", "install"
 
-    pkgshare.install %w[examples]
+    pkgshare.install %w[examples plugins/solver/benchs]
     (pkgshare/"examples/symb01.txt").write <<~EOS
       function f(x)
         return ((2*x,-x);(-x,3*x));
       end
     EOS
-
     inreplace "#{share}/pkgconfig/ibex.pc", prefix, opt_prefix
   end
 
   test do
     cp_r (pkgshare/"examples").children, testpath
-    cp pkgshare/"benchs/cyclohexan3D.bch", testpath/"c3D.bch"
 
     # so that pkg-config can remain a build-time only dependency
     inreplace %w[makefile slam/makefile] do |s|
       s.gsub! /CXXFLAGS.*pkg-config --cflags ibex./,
-              "CXXFLAGS := -I#{opt_include} -I#{opt_include}/ibex "\
-                          "-I#{opt_include}/ibex/3rd/coin -I#{opt_include}/ibex/3rd"
-      s.gsub! /LIBS.*pkg-config --libs  ibex./, "LIBS := -L#{opt_lib} -libex"
+              "CXXFLAGS := -std=c++11 -I#{include} -I#{include}/ibex "\
+                          "-I#{include}/ibex/3rd "\
+                          "`pkg-config --cflags clp`"
+      s.gsub! /LIBS.*pkg-config --libs  ibex./,
+              "LIBS := -L#{lib} -libex "\
+              "`pkg-config --libs clp`"
     end
 
-    system "make", "ctc01", "ctc02", "symb01", "solver01", "solver02"
-    system "make", "-C", "slam", "slam1", "slam2", "slam3"
-    %w[ctc01 ctc02 symb01].each { |a| system "./#{a}" }
-    %w[solver01 solver02].each { |a| system "./#{a}", "c3D.bch", "1e-05", "10" }
-    %w[slam1 slam2 slam3].each { |a| system "./slam/#{a}" }
+    (1..8).each do |n|
+      system "make", "lab#{n}"
+      system "./lab#{n}"
+    end
+
+    (1..3).each do |n|
+      system "make", "-C", "slam", "slam#{n}"
+      system "./slam/slam#{n}"
+    end
   end
 end
