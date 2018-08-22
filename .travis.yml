@@ -13,6 +13,7 @@ matrix:
       compiler: clang
 
 script:
+  - brew audit --strict --online --new-formula ./ibex@2.6.5.rb
   - rm /usr/local/include/c++ # https://github.com/Homebrew/brew/issues/1742#issuecomment-277308817
   - brew update
   - brew install dreal-deps/ibex/ibex@2.6.5 --only-dependencies || true

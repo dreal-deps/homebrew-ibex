@@ -1,10 +1,9 @@
 class IbexAT265 < Formula
   desc "C++ library for constraint processing over real numbers"
-  homepage "http://www.ibex-lib.org/"
+  homepage "https://github.com/ibex-team/ibex-lib"
   url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.6.5.tar.gz"
   sha256 "d2c99bf812750116ff1211771f0962137dd03903f670a0ce67bff06e13c7be5e"
   revision 4
-  head "https://github.com/dreal-deps/ibex-lib.git", :branch => "ibex-2.6.5"
 
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
