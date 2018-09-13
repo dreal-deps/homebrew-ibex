@@ -2,7 +2,7 @@ class IbexAT266 < Formula
   desc "C++ library for constraint processing over real numbers"
   homepage "https://github.com/ibex-team/ibex-lib"
   url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.6.6.tar.gz"
-  sha256 "27fc44ba337ffb34fcae4f6e4510b7dfbfcb3b82a8c1503ae2fd576e568e956c"
+  sha256 "e3c2bb1404656ae5f5ec5b3cf996998ffc02271a5e74a124dc40e80ad736e06c"
   revision 1
 
   # bottle do
