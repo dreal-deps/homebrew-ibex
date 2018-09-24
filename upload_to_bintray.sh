@@ -19,6 +19,9 @@ case `uname -r` in
   17.*)
     OSX_NAME="high_sierra"
     ;;
+  18.*)
+    OSX_NAME="mojave"
+    ;;
   *)
     OSX_NAME="unknown"
     ;;
