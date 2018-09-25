@@ -10,7 +10,7 @@ class IbexAT265 < Formula
     cellar :any
     sha256 "6a42d264b0be91bfbcb3c02b78d6d89ec293ae64f18c5af83c20d232d12f3bd1" => :sierra
     sha256 "b2f13961709592c613210a8606f5eba26295c1fedb6853df4d0037c6685f04a3" => :high_sierra
-    sha256 "e304c10242ae5219fe2a169af1ec1bbbf47b49d34f070bd9d05ac7ba632ce0e7" => :mojave
+    sha256 "53d92fc5ba93d31581879d7f03f6f1c74894d8316d96ed83e369ad873cafc09a" => :mojave
   end
 
   keg_only :versioned_formula
