@@ -1,16 +1,16 @@
 class IbexAT265 < Formula
   desc "C++ library for constraint processing over real numbers"
   homepage "https://github.com/ibex-team/ibex-lib"
-  url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.6.5.tar.gz"
-  sha256 "d2c99bf812750116ff1211771f0962137dd03903f670a0ce67bff06e13c7be5e"
-  revision 4
+  url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.6.5_5.tar.gz"
+  sha256 "ab513f8303eb4a0cb438e86968a225032a0c0ae123338556224423283c114c6e"
+  revision 5
 
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
     cellar :any
-    sha256 "6a42d264b0be91bfbcb3c02b78d6d89ec293ae64f18c5af83c20d232d12f3bd1" => :sierra
-    sha256 "b2f13961709592c613210a8606f5eba26295c1fedb6853df4d0037c6685f04a3" => :high_sierra
-    sha256 "53d92fc5ba93d31581879d7f03f6f1c74894d8316d96ed83e369ad873cafc09a" => :mojave
+    # sha256 "" => :sierra
+    # sha256 "" => :high_sierra
+    # sha256 "" => :mojave
   end
 
   keg_only :versioned_formula
