@@ -15,9 +15,9 @@ matrix:
 script:
   - rm /usr/local/include/c++ # https://github.com/Homebrew/brew/issues/1742#issuecomment-277308817
   - brew update
-  - brew install dreal-deps/ibex/ibex@2.6.5 --only-dependencies || true
-  - brew install dreal-deps/ibex/ibex@2.6.5 --build-from-source
-  - brew test ibex@2.6.5
+  - brew install dreal-deps/ibex/ibex@2.7.2 --only-dependencies || true
+  - brew install dreal-deps/ibex/ibex@2.7.2 --build-from-source
+  - brew test ibex@2.7.2
 
 notifications:
   email:
