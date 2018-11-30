@@ -7,8 +7,8 @@ class IbexAT274 < Formula
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
     cellar :any
-    # sha256 "fdfccb44a683b2577fb0465831badf9181eb8b83824e0b2dddc87a9a253e9460" => :sierra
-    # sha256 "b861172a7078b2a40997badf8aa0b5580c6922b43c36bea3e8326974ea1ba0a0" => :high_sierra
+    sha256 "d781abbc2294b673d0ff9fa5b9a7b60e6e830b19556dd438b8bc75b7c82d7be8" => :sierra
+    sha256 "952ac072b17e27d53cc38d8230a1572fc4783447ae36c69b7d2e4b99cc7cf6ca" => :high_sierra
     sha256 "bbb396a9a1fd2836ef41ee0007ea355429ddf392a3701ec443040dbf1b568306" => :mojave
   end
 
