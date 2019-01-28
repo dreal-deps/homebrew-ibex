@@ -15,8 +15,6 @@ class IbexAT266 < Formula
 
   keg_only :versioned_formula
 
-  option :cxx11
-
   depends_on "bison" => :build
   depends_on "flex" => :build
   depends_on "pkg-config" => :build
