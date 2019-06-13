@@ -2,15 +2,15 @@ class IbexAT274 < Formula
   desc "C++ library for constraint processing over real numbers"
   homepage "https://github.com/ibex-team/ibex-lib"
   url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.7.4.tar.gz"
-  revision 3
+  revision 4
   sha256 "60c8248fe4669f8634ba3ea5190d06f740215b8f0170bf67bfb41705fa3a5a4c"
 
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
     cellar :any
-    sha256 "879581eaf4cbf834b05e7556b7528ce70c2789c4cddd5395987bf5a5392efd59" => :sierra
-    sha256 "1255d9f1ce0bd15f6e6c1bcf86b9e00313ff4bc790f9fd84383513eb29e12734" => :high_sierra
-    sha256 "42cad5f61503396540084f203e49fdd763a74a832f2be59591537b108b809cbb" => :mojave
+    # sha256 "879581eaf4cbf834b05e7556b7528ce70c2789c4cddd5395987bf5a5392efd59" => :sierra
+    # sha256 "1255d9f1ce0bd15f6e6c1bcf86b9e00313ff4bc790f9fd84383513eb29e12734" => :high_sierra
+    sha256 "73ffe8ce3a5abe3f2098ccb4b977ca59b13e8601cb3fd284be229238b612c83f" => :mojave
   end
 
   keg_only :versioned_formula
@@ -32,7 +32,7 @@ class IbexAT274 < Formula
       --with-affine-extended
       --interval-lib=filib
       --lp-lib=clp
-      --clp-path=#{HOMEBREW_PREFIX}
+      --clp-path=#{Formula["clp@1.17"].opt_prefix}
     ]
     system "./waf", "configure", *args
     system "./waf", "install"
