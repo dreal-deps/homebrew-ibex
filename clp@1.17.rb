@@ -33,8 +33,8 @@ class ClpAT117 < Formula
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
     cellar :any
-#    sha256 "" => :sierra
-#    sha256 "" => :high_sierra
+    sha256 "77974510cecdad3d24502c11d90266cb9e1da94c1bf6deab5870a5d38ebe5337" => :sierra
+    sha256 "5452058db4b9c8238431a4a5d535c420a07f91d6aebfe907def3fb9b0527397c" => :high_sierra
     sha256 "1d88c0b08ebc43ac2b34b5a8d57246b77bc9777d9d637b78a8ed955b8b79e24f" => :mojave
   end
   
