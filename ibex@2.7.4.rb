@@ -2,15 +2,15 @@ class IbexAT274 < Formula
   desc "C++ library for constraint processing over real numbers"
   homepage "https://github.com/ibex-team/ibex-lib"
   url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.7.4.tar.gz"
-  revision 2
+  revision 3
   sha256 "0820952ec576e2d17701d47e77998fcbed0c90ba6b721926d81065303936550a"
 
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
     cellar :any
-    sha256 "5f4d08a91fcab4d478116b36f060f58e4a840c7ee076ad46569757eaeb36def8" => :sierra
-    sha256 "1d14383ad1a94d232b166cc711bb5b01dbc70e77c2ddd0f4c8b1a6a380b466a2" => :high_sierra
-    sha256 "8b67a83a01415b76d621e763f32214ecd0c61ff60c1a36d77c5204e78ec3cc04" => :mojave
+    sha256 "" => :sierra
+    sha256 "" => :high_sierra
+    sha256 "" => :mojave
   end
 
   keg_only :versioned_formula
@@ -18,7 +18,7 @@ class IbexAT274 < Formula
   depends_on "bison" => :build
   depends_on "flex" => :build
   depends_on "pkg-config" => :build
-  depends_on "dreal-deps/coinor/clp"
+  depends_on "clp@1.17"
 
   def install
     ENV.cxx11
