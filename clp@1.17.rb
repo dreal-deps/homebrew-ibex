@@ -30,6 +30,14 @@ class ClpAT117 < Formula
   url "https://www.coin-or.org/download/pkgsource/Clp/Clp-1.17.2.tgz"
   sha256 "12320e817d9fdbaeef262bd76336002f65418f80ec295f21128acf0e833b283e"
 
+  bottle do
+    root_url "https://dl.bintray.com/dreal/homebrew-ibex"
+    cellar :any
+#    sha256 "" => :sierra
+#    sha256 "" => :high_sierra
+    sha256 "1d88c0b08ebc43ac2b34b5a8d57246b77bc9777d9d637b78a8ed955b8b79e24f" => :mojave
+  end
+  
   keg_only :versioned_formula
 
   depends_on "pkg-config" => :build
