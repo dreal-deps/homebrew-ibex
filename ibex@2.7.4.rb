@@ -54,10 +54,10 @@ class IbexAT274 < Formula
       s.gsub! /CXXFLAGS.*pkg-config --cflags ibex./,
               "CXXFLAGS := -std=c++11 -I#{include} -I#{include}/ibex "\
                           "-I#{include}/ibex/3rd "\
-                          "`pkg-config --cflags clp`"
+                          "`PKG_CONFIG_PATH=#{Formula["clp@1.17"].opt_lib}/pkgconfig pkg-config --cflags clp`"
       s.gsub! /LIBS.*pkg-config --libs  ibex./,
               "LIBS := -L#{lib} -libex "\
-              "`pkg-config --libs clp`"
+              "`PKG_CONFIG_PATH=#{Formula["clp@1.17"].opt_lib}/pkgconfig pkg-config --libs clp`"
     end
 
     (1..8).each do |n|
