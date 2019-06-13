@@ -3,14 +3,14 @@ class IbexAT274 < Formula
   homepage "https://github.com/ibex-team/ibex-lib"
   url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.7.4.tar.gz"
   revision 3
-  sha256 "0820952ec576e2d17701d47e77998fcbed0c90ba6b721926d81065303936550a"
+  sha256 "60c8248fe4669f8634ba3ea5190d06f740215b8f0170bf67bfb41705fa3a5a4c"
 
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
     cellar :any
-    sha256 "" => :sierra
-    sha256 "" => :high_sierra
-    sha256 "" => :mojave
+#    sha256 "" => :sierra
+#    sha256 "" => :high_sierra
+    sha256 "42cad5f61503396540084f203e49fdd763a74a832f2be59591537b108b809cbb" => :mojave
   end
 
   keg_only :versioned_formula
