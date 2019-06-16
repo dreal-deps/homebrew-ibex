@@ -45,18 +45,18 @@ class ClpAT117 < Formula
   depends_on "openblas"
 
   resource "coin-or-coin-utils" do
-    url "https://www.coin-or.org/download/pkgsource/CoinUtils/CoinUtils-2.11.2.tgz"
-    sha256 "f27b76617d090fb82fba6229ce165c7acfef5d5d1fff40528c6bad4e55a4477b"
+    url "https://github.com/coin-or/CoinUtils/archive/releases/2.11.2.tar.gz"
+    sha256 "30c7f6c84dbb9f6e4fe5bbe4015ed15e2d1402146f8354cfc50c34d8735a49b1"
   end
 
   resource "coin-or-netlib-data" do
-    url "https://www.coin-or.org/download/source/Data/Data-Netlib-1.2.7.tgz"
-    sha256 "c3cc6abe8313e4c8a0f999281d66d1c6b0ff3f7b60c25133291663e74aac4796"
+    url "https://github.com/coin-or-tools/Data-Netlib/archive/releases/1.2.6.tar.gz"
+    sha256 "fac8b46bdc4b80eeb321ab437812d3bff1f2887c71822d6a26914ac8bfe3628e"
   end
 
   resource "coin-or-sample-data" do
-    url "https://www.coin-or.org/download/source/Data/Data-Sample-1.2.11.tgz"
-    sha256 "7d201dc37098dd1f7d68c24d71ca8083eaaa344ec44bd18799ac6245363f8467"
+    url "https://github.com/coin-or-tools/Data-Sample/archive/releases/1.2.11.tar.gz"
+    sha256 "888d21a31e93a529eb3743a92f2ba62b94b3eed4ddc44351feb8034a84c71ec5"
   end
 
   def install
