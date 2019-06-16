@@ -27,8 +27,8 @@
 class ClpAT117 < Formula
   desc "Linear programming solver"
   homepage "https://projects.coin-or.org/Clp"
-  url "https://www.coin-or.org/download/pkgsource/Clp/Clp-1.17.2.tgz"
-  sha256 "12320e817d9fdbaeef262bd76336002f65418f80ec295f21128acf0e833b283e"
+  url "https://github.com/coin-or/Clp/archive/releases/1.17.2.zip"
+  sha256 "5456cd17b93391bd0f182fa1305a7e8376821a2963125c17d2fb2efdd0743fa4"
 
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
