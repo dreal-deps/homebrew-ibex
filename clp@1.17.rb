@@ -27,15 +27,16 @@
 class ClpAT117 < Formula
   desc "Linear programming solver"
   homepage "https://projects.coin-or.org/Clp"
-  url "https://github.com/coin-or/Clp/archive/releases/1.17.2.zip"
-  sha256 "5456cd17b93391bd0f182fa1305a7e8376821a2963125c17d2fb2efdd0743fa4"
+  url "https://github.com/coin-or/Clp/archive/releases/1.17.3.zip"
+  sha256 "1878ef4b4efa2408dff5c319ae26c402d742f6a2a71dccd9a50b5f62be130b78"
+  revision 1
 
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
     cellar :any
-    sha256 "77974510cecdad3d24502c11d90266cb9e1da94c1bf6deab5870a5d38ebe5337" => :sierra
-    sha256 "5452058db4b9c8238431a4a5d535c420a07f91d6aebfe907def3fb9b0527397c" => :high_sierra
-    sha256 "1d88c0b08ebc43ac2b34b5a8d57246b77bc9777d9d637b78a8ed955b8b79e24f" => :mojave
+    sha256 "de8c59161b6416a0abd1e0dc0e712995ba1e6ae72b27839732b4aed2a6786ac2" => :sierra
+    sha256 "13d2c75590a45f8af7453f9329032ccd40c84f231d6e244de95d664133fb40c3" => :high_sierra
+    sha256 "d53bc8f5505b57701e60dcabb1747bea7e5f393eca8a381ed1ff8a1318fd66e8" => :mojave
   end
   
   keg_only :versioned_formula
