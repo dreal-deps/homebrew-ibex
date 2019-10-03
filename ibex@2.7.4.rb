@@ -2,28 +2,26 @@ class IbexAT274 < Formula
   desc "C++ library for constraint processing over real numbers"
   homepage "https://github.com/ibex-team/ibex-lib"
   url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.7.4.tar.gz"
-  revision 6
+  revision 8
   sha256 "60c8248fe4669f8634ba3ea5190d06f740215b8f0170bf67bfb41705fa3a5a4c"
 
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
     cellar :any
-    sha256 "62de67207718790ffcf7ac2cdbf05d7507535400ffbce51fc89cd2fcba37324a" => :sierra
-    sha256 "c93cfb274cc7f0c0b42ee22cc74e62e54c72116742f1e3fc3c0ae4a236d1e94b" => :high_sierra
-    sha256 "20e1df9c9c9931c09889cdd9e1965786309ea7b83e11af5d1fd22458ae7dcf80" => :mojave
+    sha256 "dbc9c054f3964fdb2fe7d4676e52becd2def1a0b0bb617e682a1b036519f97a6" => :high_sierra
+    sha256 "822a999a5cbd0f7162d7f3b519b15b1f6d18df57c7dc503ed59ea4fea3230599" => :mojave
   end
 
   keg_only :versioned_formula
 
-  depends_on "bison" => :build
-  depends_on "flex" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkg-config" => [:build, :test]
   depends_on "clp"
 
   def install
     ENV.cxx11
-    ENV.append "CXXFLAGS", "-std=c++11"
-    print prefix.to_s
+
+    # Reported 9 Oct 2017 https://github.com/ibex-team/ibex-lib/issues/286
+    ENV.deparallelize
     args = %W[
       --prefix=#{prefix}
       --enable-shared
@@ -47,12 +45,13 @@ class IbexAT274 < Formula
   end
 
   test do
+    ENV.cxx11
     cp_r (pkgshare/"examples").children, testpath
 
     # so that pkg-config can remain a build-time only dependency
     inreplace %w[makefile slam/makefile] do |s|
       s.gsub! /CXXFLAGS.*pkg-config --cflags ibex./,
-              "CXXFLAGS := -std=c++11 -I#{include} -I#{include}/ibex "\
+              "CXXFLAGS := -I#{include} -I#{include}/ibex "\
                           "-I#{include}/ibex/3rd "\
                           "`PKG_CONFIG_PATH=#{Formula["clp"].opt_lib}/pkgconfig pkg-config --cflags clp`"
       s.gsub! /LIBS.*pkg-config --libs  ibex./,
