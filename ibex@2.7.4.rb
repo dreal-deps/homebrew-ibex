@@ -10,6 +10,7 @@ class IbexAT274 < Formula
     cellar :any
     sha256 "dbc9c054f3964fdb2fe7d4676e52becd2def1a0b0bb617e682a1b036519f97a6" => :high_sierra
     sha256 "822a999a5cbd0f7162d7f3b519b15b1f6d18df57c7dc503ed59ea4fea3230599" => :mojave
+    sha256 "4000c806c748acd2579a4cbf03284c941b59746f9b216eb11391dfe9de6e9400" => :catalina    
   end
 
   keg_only :versioned_formula
