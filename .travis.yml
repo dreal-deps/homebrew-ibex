@@ -16,7 +16,7 @@ script:
   - brew install dreal-deps/ibex/ibex@2.7.4 --build-from-source
   - brew test ibex@2.7.4
   - brew linkage --test ibex@2.7.4
-  - brew audit --strict --online ibex2.7.4
+  - brew audit --strict --online ibex@2.7.4
 
 notifications:
   email:
