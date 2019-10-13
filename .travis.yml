@@ -1,5 +1,5 @@
 language: cpp
-
+rvm: system
 matrix:
   include:
     - os: osx
