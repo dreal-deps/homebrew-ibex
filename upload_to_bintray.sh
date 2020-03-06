@@ -22,6 +22,9 @@ case `uname -r` in
   18.*)
     OSX_NAME="mojave"
     ;;
+  19.*)
+    OSX_NAME="catalina"
+    ;;
   *)
     OSX_NAME="unknown"
     ;;
