@@ -1,16 +1,17 @@
 class IbexAT274 < Formula
   desc "C++ library for constraint processing over real numbers"
   homepage "https://github.com/ibex-team/ibex-lib"
-  url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.7.4.tar.gz"
-  sha256 "a260f339c315ba02572debe88796496568529524f5e3d0b32f826dafd6637efe"
-  revision 9
+  url "https://github.com/dreal-deps/ibex-lib/archive/ibex-2.7.4_10.tar.gz"
+  sha256 "629c472a67bab7188e00c4e085d28d8ed568e316de3c6df84a6bd0037f602624"
+  version "2.7.4"
+  revision 10
 
   bottle do
     root_url "https://dl.bintray.com/dreal/homebrew-ibex"
     cellar :any
-    sha256 "d2dd1bed797eca71f139079e505452506e12f2090303d2c139efac0a2a2a2359" => :high_sierra
-    sha256 "f97c448a9c01052c9f34cf02e0952b56a4a8915ee65a664916b0c99fb5249fe6" => :mojave
-    sha256 "1de8dc2cfaa3fcecc984a37367e6d497189459a7318f36ce35aba902bf894897" => :catalina
+    sha256 "3feb8467dffec3e9a677e1ba97e8d8af4772f601a009e410cc4014d4dd2593e1" => :high_sierra
+    sha256 "5e99662f25ae823c1998e0112d9265ff84b43671e8f7cdb769ae7a101428981b" => :mojave
+    sha256 "7ad28ea8e6e974e14d02971b0742738f27bad4c2a4cd173ef09276ae543dfc8e" => :catalina
   end
 
   keg_only :versioned_formula
