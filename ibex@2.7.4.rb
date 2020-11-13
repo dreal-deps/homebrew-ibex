@@ -12,6 +12,7 @@ class IbexAT274 < Formula
     sha256 "3feb8467dffec3e9a677e1ba97e8d8af4772f601a009e410cc4014d4dd2593e1" => :high_sierra
     sha256 "5e99662f25ae823c1998e0112d9265ff84b43671e8f7cdb769ae7a101428981b" => :mojave
     sha256 "7ad28ea8e6e974e14d02971b0742738f27bad4c2a4cd173ef09276ae543dfc8e" => :catalina
+    sha256 "aeb335dd6f214b9fecbfac38c0d0befcf20cc5022047045bed6c449ff8a39ff3" => :big_sur
   end
 
   keg_only :versioned_formula
