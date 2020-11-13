@@ -25,6 +25,9 @@ case `uname -r` in
   19.*)
     OSX_NAME="catalina"
     ;;
+  20.*)
+    OSX_NAME="big_sur"
+    ;;
   *)
     OSX_NAME="unknown"
     ;;
