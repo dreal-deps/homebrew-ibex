@@ -1,10 +1,3 @@
-[![Build Status](https://travis-ci.org/dreal-deps/homebrew-ibex.svg?branch=master)](https://travis-ci.org/dreal-deps/homebrew-ibex)
+# homebrew-ibex
 
-How to Maintain
----------------
-
-```bash
-brew rm ibex@2.7.4 -f
-brew install ./ibex@2.7.4.rb --build-bottle
-brew bottle ./ibex@2.7.4.rb --force-core-tap
-```
+Migrated to [robotlocomotion/director/ibex@2.7.4](https://github.com/RobotLocomotion/homebrew-director/blob/HEAD/Formula/ibex%402.7.4.rb).
